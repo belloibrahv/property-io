@@ -1,0 +1,14 @@
+{
+  "name": "afrika-property-guardian-scripts",
+  "version": "1.0.0",
+  "description": "Deployment scripts for Afrika Property Guardian",
+  "scripts": {
+    "deploy": "node deployContract.js",
+    "create-tokens": "node createTokens.js",
+    "create-topic": "node createHCSTopic.js"
+  },
+  "dependencies": {
+    "@hashgraph/sdk": "^2.64.5",
+    "dotenv": "^16.0.3"
+  }
+}
