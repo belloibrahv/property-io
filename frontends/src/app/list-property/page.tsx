@@ -215,6 +215,69 @@ export default function ListProperty() {
               />
             </div>
 
+            {/* Image Upload */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Property Images (Optional)
+              </label>
+              <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center">
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  📸 Add property images (will be stored on IPFS)
+                </p>
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  className="hidden"
+                  id="image-upload"
+                  onChange={(e) => {
+                    const files = Array.from(e.target.files || []);
+                    const imageNames = files.map(file => file.name);
+                    setFormData({
+                      ...formData,
+                      images: [...formData.images, ...imageNames]
+                    });
+                  }}
+                />
+                <label
+                  htmlFor="image-upload"
+                  className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition"
+                >
+                  Choose Images
+                </label>
+              </div>
+              
+              {/* Display selected images */}
+              {formData.images.length > 0 && (
+                <div className="mt-4">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    Selected images ({formData.images.length}):
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {formData.images.map((img, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-lg text-sm"
+                      >
+                        {img}
+                      </span>
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, images: [] })}
+                    className="mt-2 text-sm text-red-600 hover:text-red-400"
+                  >
+                    Clear all
+                  </button>
+                </div>
+              )}
+              
+              <p className="text-xs text-gray-500 mt-2">
+                Images will be uploaded to IPFS and their hashes stored on blockchain
+              </p>
+            </div>
+
             {/* Submit Button */}
             <div className="flex gap-4">
               <button
