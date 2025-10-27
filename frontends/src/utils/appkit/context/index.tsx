@@ -1,6 +1,6 @@
 "use client";
 
-import { SolanaAdapter } from "@reown/appkit-adapter-solana";
+// import { SolanaAdapter } from "@reown/appkit-adapter-solana";
 import { createAppKit } from "@reown/appkit/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { type ReactNode } from "react";
@@ -25,7 +25,7 @@ const metadata = {
   icons: ["https://assets.reown.com/reown-profile-pic.png"],
 };
 
-const solanaWeb3JsAdapter = new SolanaAdapter();
+// const solanaWeb3JsAdapter = new SolanaAdapter();
 
 // Log environment info for debugging (Billoq-style)
 console.log(`🌍 AppKit Environment: ${isMainnet ? 'Mainnet' : 'Testnet'}`);
