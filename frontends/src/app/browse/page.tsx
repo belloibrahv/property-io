@@ -85,11 +85,11 @@ export default function BrowseProperties() {
   const mockProperties = properties.map(property => ({
     ...property,
     originalPrice: property.price,
-    subtitle: property.description.split('.')[0],
-    shares: property.totalShares,
-    roi: ((property.monthlyRent * 12) / property.price * 100),
+    subtitle: property.description?.split('.')[0] || property.subtitle || '',
+    shares: property.shares,
+    roi: property.monthlyRent ? ((property.monthlyRent * 12) / property.price * 100) : property.roi,
     occupancyRate: property.occupancyRate,
-    imageHash: property.imageHashes?.[0] || "QmSample...",
+    imageHash: property.imageHash || "QmSample...",
     verified: property.rating >= 4.5,
     trending: property.isFeatured,
     isFeatured: property.isFeatured

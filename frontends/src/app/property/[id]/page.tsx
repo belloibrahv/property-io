@@ -31,7 +31,29 @@ import {
   Loader2
 } from "lucide-react";
 
-import { getPropertyById } from "@/data/properties";
+import { getPropertyById, Property } from "@/data/properties";
+
+interface ExtendedProperty extends Omit<Property, 'availableShares'> {
+  isFractionalized?: boolean;
+  totalShares?: number;
+  availableShares?: number;
+  sharePrice?: number;
+  imageHashes?: string[];
+  history?: Array<{
+    timestamp: string;
+    field: string;
+    oldValue: string;
+    newValue: string;
+    updatedBy: string;
+  }>;
+  ownershipHistory?: Array<{
+    date: string;
+    owner: string;
+    shares: number;
+    price: number;
+    transactionHash: string;
+  }>;
+}
 
 export default function PropertyDetail() {
   const params = useParams();
@@ -53,7 +75,7 @@ export default function PropertyDetail() {
   const propertyData = getPropertyById(propertyId);
   
   // Fallback to default data if property not found
-  const property = propertyData || {
+  const property: ExtendedProperty = propertyData || {
     id: propertyId,
     title: "Modern Lagos Villa, Victoria Island",
     location: "Victoria Island, Lagos, Nigeria",
@@ -344,7 +366,7 @@ export default function PropertyDetail() {
                 <span className="px-3 py-1 bg-blue-600 text-white rounded-full text-sm capitalize">
                   {property.type}
                 </span>
-                {property.isFractionalized && (
+                {'isFractionalized' in property && property.isFractionalized && (
                   <span className="px-3 py-1 bg-green-600 text-white rounded-full text-sm flex items-center space-x-1">
                     <Gem className="w-3 h-3" />
                     <span>Fractionalized</span>

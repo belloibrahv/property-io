@@ -238,7 +238,7 @@ export default function Dashboard() {
               <div className="flex items-center space-x-4 text-sm text-gray-400">
                 <div className="flex items-center space-x-1">
                   <Globe className="w-4 h-4" />
-                  <span>Network: {networkStats?.network_health || 'Healthy'}</span>
+                  <span>Network: {networkStats?.networkHealth || 'Healthy'}</span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Clock className="w-4 h-4" />

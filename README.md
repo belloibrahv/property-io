@@ -42,12 +42,92 @@ Fractional ownership managed through HTS tokens. Minted on-chain. Tradeable.
 ### Frontend → Mirror Node (Direct)
 Transaction history queried directly from Hedera Mirror Node. No database needed.
 
+## 🚀 Deployment
+
+### Deploy to Vercel (Recommended)
+
+1. **Install Vercel CLI**
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Deploy from the frontends directory**
+   ```bash
+   cd frontends
+   vercel
+   ```
+
+3. **Set environment variables in Vercel dashboard**
+   - Go to your project settings in Vercel
+   - Add all environment variables from `env.example`
+   - Redeploy the project
+
+### Environment Variables Required
+
+```env
+# Hedera Configuration
+NEXT_PUBLIC_HEDERA_NETWORK=testnet
+NEXT_PUBLIC_CONTRACT_ID=0.0.YOUR_CONTRACT_ID
+NEXT_PUBLIC_OPERATOR_ID=0.0.YOUR_OPERATOR_ID
+NEXT_PUBLIC_OPERATOR_KEY=your_operator_private_key
+NEXT_PUBLIC_TOKEN_ID=0.0.YOUR_TOKEN_ID
+
+# Mirror Node Configuration
+NEXT_PUBLIC_MIRROR_NODE_URL=https://testnet.mirrornode.hedera.com
+
+# AppKit Configuration
+NEXT_PUBLIC_APPKIT_PROJECT_ID=your_appkit_project_id
+NEXT_PUBLIC_APPKIT_ENVIRONMENT=testnet
+```
+
+### Alternative Deployment Platforms
+
+- **Netlify**: Build command `npm run build`, publish directory `.next`
+- **Railway**: Connect GitHub repo, auto-deploy on push
+- **Render**: Build command `npm run build`, start command `npm start`
+
+## 🛠️ Development Setup
+
+### Prerequisites
+- Node.js 18+ and npm
+- Git
+
+### Installation
+
+1. **Clone and install**
+   ```bash
+   git clone <repository-url>
+   cd property-io/frontends
+   npm install
+   ```
+
+2. **Environment setup**
+   ```bash
+   cp env.example .env.local
+   # Fill in your Hedera credentials
+   ```
+
+3. **Start development**
+   ```bash
+   npm run dev
+   ```
+
 ## Project Structure
 
 ```
-afrika-property-guardian/
+property-io/
 ├── frontends/              # Next.js frontend
 │   ├── src/
+│   │   ├── app/           # Next.js app router pages
+│   │   ├── components/    # Reusable React components
+│   │   ├── data/          # Mock data and types
+│   │   ├── services/      # Blockchain services
+│   │   └── utils/         # Utility functions
+│   ├── public/            # Static assets
+│   ├── vercel.json        # Vercel deployment config
+│   └── package.json       # Dependencies
+├── Smart-contract/         # Solidity contracts
+└── scripts/               # Deployment scripts
 │   │   ├── app/           # Next.js app directory
 │   │   └── utils/         # Hedera SDK integration
 │   └── package.json
