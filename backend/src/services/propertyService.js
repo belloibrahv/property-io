@@ -13,7 +13,11 @@ class PropertyService {
         bathrooms: 2,
         size: 1200,
         amenities: ['pool', 'gym', 'security', 'parking'],
-        images: ['apartment1.jpg', 'apartment2.jpg'],
+        images: [
+          'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+        ],
         ownerId: 1,
         ownerName: 'John Doe',
         ownerPhone: '+234-123-456-7890',
@@ -39,7 +43,11 @@ class PropertyService {
         bathrooms: 3,
         size: 2000,
         amenities: ['garden', 'parking', 'security'],
-        images: ['house1.jpg', 'house2.jpg'],
+        images: [
+          'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+        ],
         ownerId: 2,
         ownerName: 'Jane Smith',
         ownerPhone: '+234-987-654-3210',
@@ -65,7 +73,11 @@ class PropertyService {
         bathrooms: 2,
         size: 1500,
         amenities: ['elevator', 'security', 'parking', 'conference room'],
-        images: ['office1.jpg', 'office2.jpg'],
+        images: [
+          'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+        ],
         ownerId: 3,
         ownerName: 'Mike Johnson',
         ownerPhone: '+234-555-123-4567',

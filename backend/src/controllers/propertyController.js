@@ -164,7 +164,11 @@ const propertyController = {
                     bedrooms: 3,
                     bathrooms: 2,
                     area_sqm: 1200,
-                    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop'],
+                    images: [
+                        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                        'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+                    ],
                     owner_id: 1,
                     is_verified: true,
                     is_featured: true,
@@ -185,7 +189,11 @@ const propertyController = {
                     bedrooms: 4,
                     bathrooms: 3,
                     area_sqm: 2000,
-                    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop'],
+                    images: [
+                        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                        'https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                        'https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+                    ],
                     owner_id: 2,
                     is_verified: true,
                     is_featured: false,
@@ -206,7 +214,11 @@ const propertyController = {
                     bedrooms: 0,
                     bathrooms: 4,
                     area_sqm: 1500,
-                    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop'],
+                    images: [
+                        'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                        'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                        'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+                    ],
                     owner_id: 2,
                     is_verified: true,
                     is_featured: true,
@@ -259,7 +271,10 @@ const propertyController = {
                     bedrooms: 3,
                     bathrooms: 2,
                     area_sqm: 1200,
-                    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop'],
+                    images: [
+                        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+                    ],
                     owner_id: 1,
                     is_verified: true,
                     is_featured: true,
@@ -280,7 +295,10 @@ const propertyController = {
                     bedrooms: 4,
                     bathrooms: 3,
                     area_sqm: 2000,
-                    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop'],
+                    images: [
+                        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                        'https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+                    ],
                     owner_id: 2,
                     is_verified: true,
                     is_featured: false,
@@ -301,7 +319,10 @@ const propertyController = {
                     bedrooms: 0,
                     bathrooms: 4,
                     area_sqm: 1500,
-                    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop'],
+                    images: [
+                        'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                        'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+                    ],
                     owner_id: 2,
                     is_verified: true,
                     is_featured: true,

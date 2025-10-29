@@ -1,9 +1,10 @@
-"农业client";
+"use client";
 
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 import { useAppKitAccount } from "@reown/appkit/react";
+import { Gem } from "lucide-react";
 
 export default function BuyShares() {
   const params = useParams();
@@ -133,8 +134,9 @@ export default function BuyShares() {
 
             {/* Benefits */}
             <div className="border border-green-200 dark:border-green-800 rounded-lg p-4 bg-green-50 dark:bg-green-900/20">
-              <h4 className="font-semibold text-green-900 dark:text-green-100 mb-2">
-                💎 What You Get:
+              <h4 className="font-semibold text-green-900 dark:text-green-100 mb-2 flex items-center space-x-2">
+                <Gem className="w-4 h-4" />
+                <span>What You Get:</span>
               </h4>
               <ul className="space-y-1 text-sm text-green-800 dark:text-green-200">
                 <li>• Partial ownership of this property</li>
