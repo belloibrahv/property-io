@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: property-io-frontend
+    env: node
+    rootDirectory: frontends
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    envVars:
+      - key: NEXT_PUBLIC_HEDERA_NETWORK
+        value: testnet
+      # Set these in the Render dashboard once you have real IDs
+      # - key: NEXT_PUBLIC_CONTRACT_ID
+      #   value: 0.0.TBD
+      # - key: NEXT_PUBLIC_TOKEN_ID
+      #   value: 0.0.TBD
