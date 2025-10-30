@@ -24,3 +24,42 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Logo animation styles */
+.logo-animated {
+  transition: transform 200ms ease;
+}
+.logo-animated:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 8px rgba(59,130,246,0.35));
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); opacity: 0.12; }
+  50% { transform: scale(1.06); opacity: 0.20; }
+  100% { transform: scale(1); opacity: 0.12; }
+}
+
+@keyframes floatRoof {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes dashOrbit {
+  to { stroke-dashoffset: -60; }
+}
+
+.logo-animated .pulse {
+  transform-origin: center;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.logo-animated .roof {
+  animation: floatRoof 6s ease-in-out infinite;
+}
+
+.logo-animated .orbit {
+  stroke-dasharray: 6 6;
+  animation: dashOrbit 8s linear infinite;
+}

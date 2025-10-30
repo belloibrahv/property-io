@@ -44,7 +44,7 @@ export default function Home() {
       {/* Navigation Header */}
       <nav className="flex items-center justify-between px-6 py-4 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 sticky top-0 z-50">
         <div className="flex items-center space-x-3">
-          <Logo variant="compact" width={120} height={32} />
+          <Logo variant="compact" width={160} height={44} className="logo-animated" />
         </div>
         
         <div className="hidden md:flex items-center space-x-8">

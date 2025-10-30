@@ -140,7 +140,7 @@ export default function FractionalizePage({ params }: { params: Promise<{ id: st
             </Link>
             <div className="flex items-center space-x-8">
               <div className="flex items-center space-x-2">
-                <Logo variant="compact" width={120} height={32} />
+                <Logo variant="compact" width={160} height={44} className="logo-animated" />
               </div>
               <div className="flex items-center space-x-4">
                 <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center">

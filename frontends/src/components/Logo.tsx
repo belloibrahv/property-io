@@ -21,7 +21,7 @@ export const Logo: React.FC<LogoProps> = ({
         viewBox="0 0 120 40" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
-        className={className}
+        className={`logo-animated ${className}`}
       >
         <defs>
           <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -39,7 +39,7 @@ export const Logo: React.FC<LogoProps> = ({
         </defs>
         
         <g>
-          <circle cx="20" cy="20" r="16" fill="url(#primaryGradient)" opacity="0.1"/>
+          <circle cx="20" cy="20" r="16" fill="url(#primaryGradient)" opacity="0.12" className="pulse"/>
           
           <g transform="translate(8, 8)">
             <rect x="4" y="16" width="16" height="12" fill="url(#primaryGradient)" rx="1"/>
@@ -51,7 +51,7 @@ export const Logo: React.FC<LogoProps> = ({
             <rect x="16" y="22" width="2" height="2" fill="white" opacity="0.8" rx="0.3"/>
             <rect x="8" y="25" width="4" height="3" fill="url(#accentGradient)" rx="0.5"/>
             
-            <path d="M2 10 L12 4 L22 10 L18 13 L12 8 L6 13 Z" fill="url(#accentGradient)" opacity="0.9"/>
+            <path d="M2 10 L12 4 L22 10 L18 13 L12 8 L6 13 Z" fill="url(#accentGradient)" opacity="0.9" className="roof"/>
           </g>
           
           <text x="42" y="18" fontFamily="system-ui, -apple-system, sans-serif" fontSize="11" fontWeight="700" fill="url(#textGradient)">
@@ -60,6 +60,8 @@ export const Logo: React.FC<LogoProps> = ({
           <text x="42" y="28" fontFamily="system-ui, -apple-system, sans-serif" fontSize="9" fontWeight="600" fill="url(#accentGradient)">
             Guardian
           </text>
+
+          <line x1="42" y1="31" x2="110" y2="31" stroke="url(#primaryGradient)" strokeWidth="1" opacity="0.3" className="orbit"/>
         </g>
       </svg>
     );
@@ -72,7 +74,7 @@ export const Logo: React.FC<LogoProps> = ({
       viewBox="0 0 200 60" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={`logo-animated ${className}`}
     >
       <defs>
         <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -90,7 +92,7 @@ export const Logo: React.FC<LogoProps> = ({
       </defs>
       
       <g>
-        <circle cx="30" cy="30" r="25" fill="url(#primaryGradient)" opacity="0.1"/>
+        <circle cx="30" cy="30" r="25" fill="url(#primaryGradient)" opacity="0.12" className="pulse"/>
         
         <g transform="translate(10, 10)">
           <rect x="8" y="25" width="24" height="20" fill="url(#primaryGradient)" rx="2"/>
@@ -105,12 +107,12 @@ export const Logo: React.FC<LogoProps> = ({
           
           <rect x="13" y="40" width="6" height="5" fill="url(#accentGradient)" rx="1"/>
           
-          <path d="M5 15 L20 5 L35 15 L30 20 L20 12 L10 20 Z" fill="url(#accentGradient)" opacity="0.9"/>
+          <path d="M5 15 L20 5 L35 15 L30 20 L20 12 L10 20 Z" fill="url(#accentGradient)" opacity="0.9" className="roof"/>
           
           <circle cx="6" cy="18" r="2" fill="url(#accentGradient)" opacity="0.7"/>
           <circle cx="34" cy="18" r="2" fill="url(#accentGradient)" opacity="0.7"/>
           
-          <line x1="2" y1="22" x2="38" y2="22" stroke="url(#primaryGradient)" strokeWidth="1" opacity="0.6"/>
+          <line x1="2" y1="22" x2="38" y2="22" stroke="url(#primaryGradient)" strokeWidth="1" opacity="0.6" className="orbit"/>
         </g>
         
         <text x="65" y="25" fontFamily="system-ui, -apple-system, sans-serif" fontSize="16" fontWeight="700" fill="url(#textGradient)">

@@ -167,7 +167,7 @@ export default function BrowseProperties() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center space-x-2">
-                <Logo variant="compact" width={120} height={32} />
+                <Logo variant="compact" width={160} height={44} className="logo-animated" />
               </Link>
               <div className="hidden md:flex space-x-6">
                 <Link href="/browse" className="text-blue-400 hover:text-blue-300 px-3 py-2 text-sm font-medium transition-colors">
