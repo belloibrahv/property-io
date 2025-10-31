@@ -29,9 +29,38 @@ if (!projectId) {
 // Environment detection (Billoq-style)
 const isMainnet = process.env.NEXT_PUBLIC_ENVIRONMENT === 'mainnet';
 
+// Hedera EVM network configs (custom)
+const hederaMainnet: any = {
+  id: 295,
+  name: 'Hedera Mainnet',
+  network: 'hedera-mainnet',
+  nativeCurrency: { name: 'HBAR', symbol: 'HBAR', decimals: 18 },
+  rpcUrls: {
+    default: { http: [process.env.NEXT_PUBLIC_HEDERA_RPC_URL || 'https://mainnet.hashio.io/api'] },
+    public: { http: [process.env.NEXT_PUBLIC_HEDERA_RPC_URL || 'https://mainnet.hashio.io/api'] },
+  },
+  blockExplorers: {
+    default: { name: 'HashScan', url: 'https://hashscan.io/mainnet' },
+  },
+};
+
+const hederaTestnet: any = {
+  id: 296,
+  name: 'Hedera Testnet',
+  network: 'hedera-testnet',
+  nativeCurrency: { name: 'HBAR', symbol: 'HBAR', decimals: 18 },
+  rpcUrls: {
+    default: { http: [process.env.NEXT_PUBLIC_HEDERA_RPC_URL || 'https://testnet.hashio.io/api'] },
+    public: { http: [process.env.NEXT_PUBLIC_HEDERA_RPC_URL || 'https://testnet.hashio.io/api'] },
+  },
+  blockExplorers: {
+    default: { name: 'HashScan', url: 'https://hashscan.io/testnet' },
+  },
+};
+
 // Dynamic network configuration based on environment (Billoq-style)
-const mainnetNetworks: [any, ...any[]] = [lisk, arbitrum, base, bsc];
-const testnetNetworks: [any, ...any[]] = [sepolia, liskSepolia, arbitrumSepolia, bscTestnet, baseSepolia];
+const mainnetNetworks: [any, ...any[]] = [lisk, arbitrum, base, bsc, hederaMainnet];
+const testnetNetworks: [any, ...any[]] = [sepolia, liskSepolia, arbitrumSepolia, bscTestnet, baseSepolia, hederaTestnet];
 
 // Use appropriate networks based on environment (always ensure at least one network)
 export const networks = isMainnet ? mainnetNetworks : testnetNetworks;
