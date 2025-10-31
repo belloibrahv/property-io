@@ -18,6 +18,7 @@ import {
   bscTestnet,
 } from "@reown/appkit/networks";
 import { cookieStorage, createStorage } from "@wagmi/core";
+import type { Chain } from "@reown/appkit/networks";
 
 // Get project ID from environment variables with fallback (Billoq-style)
 export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || "a9fbadc760baa309220363ec867b732e";
@@ -30,10 +31,11 @@ if (!projectId) {
 const isMainnet = process.env.NEXT_PUBLIC_ENVIRONMENT === 'mainnet';
 
 // Hedera EVM network configs (custom)
-const hederaMainnet: any = {
+const hederaMainnet: Chain = {
   id: 295,
   name: 'Hedera Mainnet',
   network: 'hedera-mainnet',
+
   nativeCurrency: { name: 'HBAR', symbol: 'HBAR', decimals: 18 },
   rpcUrls: {
     default: { http: [process.env.NEXT_PUBLIC_HEDERA_RPC_URL || 'https://mainnet.hashio.io/api'] },
@@ -44,7 +46,7 @@ const hederaMainnet: any = {
   },
 };
 
-const hederaTestnet: any = {
+const hederaTestnet: Chain = {
   id: 296,
   name: 'Hedera Testnet',
   network: 'hedera-testnet',
@@ -59,11 +61,11 @@ const hederaTestnet: any = {
 };
 
 // Dynamic network configuration based on environment (Billoq-style)
-const mainnetNetworks: [any, ...any[]] = [lisk, arbitrum, base, bsc, hederaMainnet];
-const testnetNetworks: [any, ...any[]] = [sepolia, liskSepolia, arbitrumSepolia, bscTestnet, baseSepolia, hederaTestnet];
+const mainnetNetworks: [Chain, ...Chain[]] = [lisk as Chain, arbitrum as Chain, base as Chain, bsc as Chain, hederaMainnet];
+const testnetNetworks: [Chain, ...Chain[]] = [sepolia as Chain, liskSepolia as Chain, arbitrumSepolia as Chain, bscTestnet as Chain, baseSepolia as Chain, hederaTestnet];
 
 // Use appropriate networks based on environment (always ensure at least one network)
-export const networks = isMainnet ? mainnetNetworks : testnetNetworks;
+export const networks: Chain[] = isMainnet ? mainnetNetworks : testnetNetworks;
 
 // Network configuration for better UX (Billoq-style environment awareness)
 export const networkConfig = {

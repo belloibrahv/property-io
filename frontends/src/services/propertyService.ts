@@ -5,14 +5,25 @@
  * No backend database needed - all data comes from blockchain.
  */
 
-import { mirrorNodeService, Transaction } from './mirrorNode';
+import { mirrorNodeService, Transaction, ContractResult } from './mirrorNode';
+
+export interface PropertyDetails {
+  memo?: string;
+  transfers?: Transaction['transfers'];
+  fee?: number;
+  result?: string;
+  functionName?: string;
+  functionParameters?: string;
+  gasUsed?: number;
+  logs?: ContractResult['logs'];
+}
 
 export interface PropertyOperation {
   transactionId: string;
   timestamp: string;
   operation: 'list' | 'update' | 'fractionalize' | 'sell' | 'deactivate';
   propertyId?: string;
-  details: any;
+  details: PropertyDetails;
   accountId: string;
 }
 
@@ -244,7 +255,7 @@ export class PropertyService {
   /**
    * Parse contract results into property operations (best-effort without ABI)
    */
-  private parseContractResult(res: any): PropertyOperation | null {
+  private parseContractResult(res: ContractResult): PropertyOperation | null {
     try {
       const fn = (res.function_name || '').toLowerCase();
       let operation: PropertyOperation['operation'] = 'list';
