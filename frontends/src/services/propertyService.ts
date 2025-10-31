@@ -116,8 +116,20 @@ export class PropertyService {
    */
   async getRecentPropertyListings(limit: number = 20): Promise<PropertyOperation[]> {
     try {
+      // Prefer contract results if contractId is configured
+      if (this.contractId) {
+        try {
+          const results = await mirrorNodeService.getContractResults(this.contractId, limit * 2);
+          return results
+            .map(res => this.parseContractResult(res))
+            .filter(op => op !== null)
+            .slice(0, limit) as PropertyOperation[];
+        } catch (e) {
+          console.warn('Falling back to recent transactions due to contract results error:', e);
+        }
+      }
+
       const transactions = await mirrorNodeService.getRecentTransactions(limit * 2);
-      
       return transactions
         .filter(tx => this.isPropertyTransaction(tx) && this.isListingTransaction(tx))
         .map(tx => this.parsePropertyTransaction(tx))
@@ -225,6 +237,60 @@ export class PropertyService {
       };
     } catch (error) {
       console.error('Failed to parse property transaction:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Parse contract results into property operations (best-effort without ABI)
+   */
+  private parseContractResult(res: any): PropertyOperation | null {
+    try {
+      const fn = (res.function_name || '').toLowerCase();
+      let operation: PropertyOperation['operation'] = 'list';
+
+      if (fn.includes('update')) {
+        operation = 'update';
+      } else if (fn.includes('fraction') || fn.includes('token')) {
+        operation = 'fractionalize';
+      } else if (fn.includes('sell') || fn.includes('transfer')) {
+        operation = 'sell';
+      } else if (fn.includes('deactivate') || fn.includes('hide')) {
+        operation = 'deactivate';
+      }
+
+      // Try to infer propertyId from function_parameters (hex-encoded)
+      let propertyId: string | undefined = undefined;
+      const paramsHex: string = res.function_parameters || '';
+      if (paramsHex) {
+        // Naive attempt: decode ASCII segments from hex
+        try {
+          const hex = paramsHex.replace(/^0x/, '');
+          const bytes = new Uint8Array(hex.match(/.{1,2}/g)?.map(b => parseInt(b, 16)) || []);
+          const ascii = new TextDecoder().decode(bytes);
+          const match = ascii.match(/property[:\s]*(\w+)/i);
+          propertyId = match ? match[1] : undefined;
+        } catch (_) {
+          // ignore decode errors
+        }
+      }
+
+      return {
+        transactionId: res.transaction_hash || res.timestamp,
+        timestamp: res.timestamp,
+        operation,
+        propertyId,
+        details: {
+          functionName: res.function_name,
+          functionParameters: res.function_parameters,
+          gasUsed: res.gas_used,
+          result: res.result,
+          logs: res.logs
+        },
+        accountId: res.from || ''
+      };
+    } catch (error) {
+      console.error('Failed to parse contract result:', error);
       return null;
     }
   }

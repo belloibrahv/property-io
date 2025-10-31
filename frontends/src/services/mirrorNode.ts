@@ -118,6 +118,24 @@ export interface ContractInfo {
   };
 }
 
+export interface ContractResult {
+  timestamp: string;
+  contract_id: string;
+  from: string;
+  to: string;
+  transaction_hash: string;
+  result?: string;
+  function_parameters?: string;
+  function_name?: string;
+  gas_used?: number;
+  logs?: Array<{
+    data: string;
+    index: number;
+    timestamp: string;
+    topics: string[];
+  }>;
+}
+
 export class MirrorNodeService {
   private config: MirrorNodeConfig;
 
@@ -210,6 +228,48 @@ export class MirrorNodeService {
     }
     
     return response.json();
+  }
+
+  /**
+   * Get contract call results (read-only activity of a contract)
+   */
+  async getContractResults(
+    contractId: string,
+    limit: number = 25,
+    order: 'asc' | 'desc' = 'desc'
+  ): Promise<ContractResult[]> {
+    const params = new URLSearchParams({
+      limit: limit.toString(),
+      order
+    });
+
+    const response = await fetch(`${this.config.baseUrl}/api/v1/contracts/${contractId}/results?${params}`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch contract results: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return (data.results || []) as ContractResult[];
+  }
+
+  /**
+   * Get contract logs (emitted events)
+   */
+  async getContractLogs(
+    contractId: string,
+    limit: number = 25,
+    order: 'asc' | 'desc' = 'desc'
+  ): Promise<Array<{ data: string; index: number; timestamp: string; topics: string[] }>> {
+    const params = new URLSearchParams({
+      limit: limit.toString(),
+      order
+    });
+
+    const response = await fetch(`${this.config.baseUrl}/api/v1/contracts/${contractId}/logs?${params}`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch contract logs: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return (data.logs || []) as Array<{ data: string; index: number; timestamp: string; topics: string[] }>;
   }
 
   /**
